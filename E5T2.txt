@@ -1,0 +1,39 @@
+# Identify tools that will allow you to do the following:
+
+## Scan infrastructure as code templates
+
+CFRipper is a Library and CLI security analyzer for AWS CloudFormation templates. You can use CFRipper to prevent deploying insecure AWS resources into your Cloud environment. 
+
+### Example vulnerability
+
+	- FullWildcardPrincipalRule: rootRole should not allow wildcards in principals (principal: '*')
+	- IAMRolesOverprivilegedRule: Role 'rootRole' contains an insecure permission '*' in policy 'root'
+
+##Scan AMI’s or containers for OS vulnerabilities
+
+The Anchore engine is an open source project that inspects, analyzes, and certifies Docker images. Anchore is available as a Docker image that can be run standalone or with orchestration platforms such as Kubernetes.
+
+### Example vulnerability
+
+$ anchore-cli evaluate check debian:latest
+
+Image Digest: sha256:427752aa7da803378f765f5a8efba421df5925cbde8ab011717f3642f406fb15
+Full Tag: docker.io/debian:latest
+Status: fail
+Last Eval: 2017-09-02T15:19:55
+Policy ID: 715a6056-87ab-49fb-abef-f4b4198c67bf
+
+Gate                   Trigger              Detail                                                                                                                                         Status        
+DOCKERFILECHECK        NOHEALTHCHECK        Dockerfile does not contain any HEALTHCHECK instructions   
+ANCHORESEC             VULNHIGH             HIGH Vulnerability found in package - mount (CVE-2016-2779 - https://security-tracker.debian.org/tracker/CVE-2016-2779)   
+ANCHORESEC             VULNHIGH             HIGH Vulnerability found in package - libuuid1 (CVE-2016-2779 - https://security-tracker.debian.org/tracker/CVE-2016-2779)
+
+##Scan an AWS environment for cloud configuration vulnerabilities
+
+AWS Config is an effective tool for assessing, evaluating, recording, auditing configurations of the resources in your AWS environment. It simplifies security analysis, compliance auditing, operational troubleshooting, and change management.
+
+### Example vulnerability
+
+securityhub-mfa-enabled-for-iam-console-access-912eeacd - Checks whether AWS Multi-Factor Authentication (MFA) is enabled for all AWS Identity and Access Management (IAM) users that use a console password.
+
+securityhub-s3-bucket-ssl-requests-only-5317dc21 - Checks whether S3 buckets have policies that require requests to use Secure Socket Layer (SSL)

@@ -1,0 +1,7 @@
+Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
+
+# Poor practice 1
+The web application should not be run in public subnet, it should be run in the private subnet. And the instance should be allowed access only from trusted subnet.
+
+# Poor practice 2
+The web application instance IAM role and policy should be restricted to only access free receipe s3 bucket.

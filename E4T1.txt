@@ -1,0 +1,14 @@
+
+
+# Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
+
+Default security group for VPC should be closed. Hence SSH access would be restricted to internet. 
+Only an assigned IAM role should have had access to the EC2 instance.
+The EC2 instance should be created in private subnet, so it would restricted access to internet.
+A new security group with closed inbound traffic to SSH can be created and assigned to the EC2 instance.
+SSH authentication on the EC2 instance could be turned off.
+
+# Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
+
+Secret recipes S3 bucket should be restricted access only to privileged users with privileged IAM role.
+Also this S3 bucket encryption should be enabled.
